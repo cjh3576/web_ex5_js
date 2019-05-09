@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#d1 {
+	border: 1px solid black;
+	width: 18%;
+	float: left;
+	margin-left: 30px;
+	text-align: center;
+}
+
+#d2 {
+	margin-top: 30px;
+	widht: 30px;
+	margin-bottom: 30px;
+}
+#checkbox{
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+img {
+	width: 90%;
+	height: 200px;
+	
+}
+
+#wrapper {
+	width: 100%;
+}
+#buttonin{
+	margin-top: 50px;
+}
+#button {
+	clear: both;
+	text-align: center;
+	margin-top: 50px;
+}
+
+#button>button {
+	align-content: center;
+	align-items: center;
+}
+
+</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="d1" class="list">
+			<div id="checkbox">
+				<input type="checkbox" id="img" class="imgc">
+			</div>
+			<img alt="아이유" src="/web_ex5_js/images/아이유.jpg">
+			<div id="d2">아이유</div>
+		</div>
+
+		<div id="d1" class="list">
+			<div id="checkbox">
+				<input type="checkbox" id="img" class="imgc">
+			</div>
+			<img alt="이하늬" src="/web_ex5_js/images/이하늬.jpg">
+			<div id="d2">이하늬</div>
+		</div>
+
+		<div id="d1" class="list">
+			<div id="checkbox">
+				<input type="checkbox" id="img" class="imgc">
+			</div>
+			<img alt="태연" src="/web_ex5_js/images/태연.jpg">
+			<div id="d2">태연</div>
+		</div>
+
+		<div id="d1" class="list">
+			<div id="checkbox">
+				<input type="checkbox" id="img" class="imgc">
+			</div>
+			<img alt="테크노" src="/web_ex5_js/images/테크노.jpg">
+			<div id="d2">테크노</div>
+		</div>
+
+		<div id="d1" class="list">
+			<div id="checkbox">
+				<input type="checkbox" id="img" class="imgc">
+			</div>
+			<img alt="플라이" src="/web_ex5_js/images/플라이.jpg">
+			<div id="d2">플라이</div>
+		</div>
+		<div id="buttonin">
+			<div id="button">
+				<button onclick="go()">Button</button>
+			</div>
+		</div>
+		<div id = "result">
+		</div>
+	</div>
+	<!-- 결과출력  -->
+	
+	
+	<script type="text/javascript">
+		function go(){
+			var list= document.getElementsByClassName('list');
+			var imgc = document.getElementsByClassName('imgc');
+			var result = document.getElementById('result');
+			var data ='';
+			for(var i=0; i<imgc.length; i++){
+				if(imgc[i].checked){
+					data += '<div id = "d1" class="list">' + list[i].innerHTML+'</div>';
+					
+				}
+			}
+			result.innerHTML = data;
+		}
+	</script>
+</body>
+</html>

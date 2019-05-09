@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	A<input type="checkbox" id="i1" onclick="go()"> 
+	1<input type="checkbox" class="c2" onclick="go2()"> 
+	2<input type="checkbox" class="c2" onclick="go2()"> 
+	3<input type="checkbox" class="c2" onclick="go2()">
+
+
+	<script type="text/javascript">
+		var i1 = document.getElementById('i1');
+		var c2 = document.getElementsByClassName('c2');
+
+		function go() {
+			for (var i = 0; i < c2.length; i++) {
+				c2[i].checked = i1.checked;
+			}
+		}
+
+		function go2() {
+			if (c2[0].checked && c2[1].checked && c2[2].checked) {
+				i1.checked = true;
+			} else {
+				i1.checked = false;
+			}
+
+		}
+	</script>
+</body>
+</html>

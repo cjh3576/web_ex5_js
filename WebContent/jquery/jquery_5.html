@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	var i = 0;
+	$(function() {
+		$('#btn1').click(function() {
+			if (i < 5) {
+			$('#result').append('<div id="d'+i+'"><input type="file" id="f1"><span title ="d'+i+'" class="d" id="i1">X</span></div>');
+			i++;
+			}
+		});
+	});
+
+	$(function() {
+		$('#result').on('click', '.d', function() {
+			$(this).parent().remove();
+			/* var id = $(this).attr('title');
+			$('#'+id).remove(); */
+			
+			/* $('#f1').remove();
+			$('#i1').remove(); */
+			i--;
+		});
+	});
+</script>
+
+<style type="text/css">
+.d {
+	cursor:pointer;
+	color: red;
+}
+</style>
+
+</head>
+<body>
+
+	<button id="btn1">ADD</button>
+	<div id="result"></div>
+
+</body>
+</html>

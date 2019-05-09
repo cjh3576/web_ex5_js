@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<img alt="테크노" src="./images/테크노.jpg" id="i1" class = "c1" title="t1">
+	<br>
+	<button onclick="f1()">CLICK</button>
+	<button onclick="f2()">CHANGE</button>
+	<button onclick="f3()">Toggle</button>
+	<script type="text/javascript">
+		var i1 = document.getElementById('i1');
+		function f1(){
+			// attribute 가지고오기
+			// li.getAttribute("속성명");
+			
+			// li.setAttribute("속성명", "값")
+			/* var li = document.getElementById('i1'); */
+			/* alert(i1.getAttribute("alt")) */
+			alert(i1.alt);
+			/* a = document.getElementById('i1').src; */
+			alert(i1.src);
+			/* a = document.getElementById('i1').id; */
+			alert(i1.id);
+			/* a = document.getElementById('i1').className; */
+			alert(i1.className);
+			/* a = document.getElementById('i1').title; */
+			alert(i1.title);
+		}	
+		
+		function f2() {
+			var i1 = document.getElementById('i1');
+			i1.setAttribute("src","./images/플라이.jpg");
+		}
+		function f3() {
+			if(i1.alt==("테크노")){
+				i1.setAttribute("src","./images/플라이.jpg");
+				i1.setAttribute("alt","플라이");
+			} else if(i1.alt==("플라이")) {
+				i1.setAttribute("src","./images/테크노.jpg");
+				i1.setAttribute("alt","테크노");
+			}
+			
+			
+		}
+	
+	</script>
+</body>
+</html>
