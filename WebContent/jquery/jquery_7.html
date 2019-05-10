@@ -11,37 +11,186 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+.check{
+	color : red;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+		var f = document.boardform;
+		var id;
+		var pwd;
+		var overlapcheck;
+		$('#id').keyup(function() {
+			id = document.getElementById('id');
+			var idcheck = document.getElementById('idcheck');
+			if (id.value.length > 9) {
+				idcheck.innerHTML = '아이디는 10자 미만으로 입력하세요';
+			} else if (id.value.length < 10) {
+				idcheck.innerHTML = '';
+			} else if (id.value == '') {
+				idcheck.innerHTML = '필수 입력 항목입니다.';
+			}
+
+		});//Id 글자수 체크
+
+		$('#idoverlap').click(function() {
+			
+			open("./idoverlap.html", "myWindow", "width=400, height=300");
+			
+		});//Id 중복확인 창 띄우기
+		
+		
+			$('#id').change(function(){
+			document.getElementById('idoverlap').value = '중복확인';
+			id = document.getElementById('id');
+			var idcheck = document.getElementById('idcheck');
+			if (id.value.length > 9) {
+				idcheck.innerHTML = '아이디는 10자 미만으로 입력하세요';
+			} else if (id.value.length < 10) {
+				idcheck.innerHTML = '';
+			} else if (id.value == '') {
+				idcheck.innerHTML = '필수 입력 항목입니다.';
+			}
+			
+			}); //id 변경시 재 확인
+
+			
+		
+		$('#pwd').blur(function() {
+			pwd = document.getElementById('pwd');
+			var pwdcheck = document.getElementById('pwdcheck');
+			if (pwd.value.length < 6&& pwd.value.length>1) {
+				pwdcheck.innerHTML = '패스워드는 6자 이상으로 입력하세요';
+			} else if (pwd.value.length > 5) {
+				pwdcheck.innerHTML = '';
+			} else if(pwd.value ==''){
+				pwdcheck.innerHTML='필수 입력 항목입니다.';
+			}
+
+		});//비밀번호 6자 이상 체크
+		
+
+		$('#pwd1').blur(function() {
+			pwd1 = document.getElementById('pwd1');
+			var pwdoverlap = document.getElementById('pwdoverlap');
+			if (pwd.value == pwd1.value) {
+				pwdoverlap.innerHTML = '비밀번호가 일치합니다';
+			} else if(pwd1.value ==''){
+				pwdoverlap.innerHTML = '필수 입력 항목입니다.';
+			} 
+			else if(pwd.value != pwd1.value){
+				pwdoverlap.innerHTML = '비밀번호가 일치하지 않습니다';
+			}
+		});//비밀번호 일치확인
+		
+
+		$('#email').blur(function() {
+			var email = document.getElementById('email');
+			var emailc = document.getElementById('emailcheck');
+			if (email.value == '') {
+				emailc.innerHTML = '필수 입력 항목입니다';
+			} else if (email.value.length > 5) {
+				emailc.innerHTML = '';
+
+			}
+		});//이메일 입력 확인
+		
+
+		$('#phone').blur(function() {
+			var phone = document.getElementById('phone');
+			var phonec = document.getElementById('phonecheck');
+			if (phone.value == '') {
+				phonec.innerHTML = '필수 입력 항목입니다';
+			} else if (phone.value.length > 5) {
+				phonec.innerHTML = '';
+			}
+		})//폰 입력 확인
+		
+		$('#join').click(function() {
+			var str = f.id.value;
+			if(!str || str.length>9) {
+				alert("ID를 입력하세요.  ");
+				f.id.focus();
+				return false;
+			}
+			
+			str = document.getElementById('idoverlap').value;
+			if(str !='중복확인성공') {
+				alert('ID 중복 확인을 하세요.  ');
+				f.id.focus();
+				return false;
+			}
+			
+			str = f.pwd.value;
+			if(!str||str.length<6) {
+				alert("PW를 입력하세요.  ");
+				f.pwd.focus();
+				return false;
+			}
+			
+			str = f.pwd1.value;
+			var str1 = f.pwd.value;
+			if(!str|| str != str1){
+				alert("PW를 재확인하세요.  ");
+				f.pwd1.focus();
+				return false;
+			}
+			
+			str = f.email.value;
+			if(!str){
+				alert("Email을 입력하세요.  ");
+				f.email.focus();
+				return false;
+			}
+			
+			str = f.phone.value;
+			if(!str){
+				alert("Phone을 입력하세요.  ");
+				f.phone.focus();
+				return false;
+			}
+			location.href = "./jquery_8.html";
+			
+		}); //조인 폼
+
+	});//끝
+</script>
+
 </head>
 <body>
 	<div class="container">
 		<h2>Join form</h2>
-		<form action="/action_page.php">
+		<form action="./jquery_8.html" name = "boardform">
 			<div class="form-group">
-				<label for="id">Id:</label> <input type="text"
-					class="form-control" id="id" placeholder="Enter Id"
-					name="id">
+				<label for="id">Id:</label> <input type="text" class="form-control" id="id" placeholder="Enter Id" name="id"  >
+				<input type="button" value="중복확인" id="idoverlap" >
+				<div id="idcheck" class = "check"></div>
 			</div>
 			<div class="form-group">
-				<label for="pwd">Password:</label> <input type="password"
-					class="form-control" id="pwd" placeholder="Enter password"
-					name="pwd">
+				<label for="pwd">Password:</label> 
+				<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+				<div id="pwdcheck" class = "check"></div>
 			</div>
 			<div class="form-group">
-				<label for="pwd">Password:</label> <input type="password"
-					class="form-control" id="pwd" placeholder="Enter password"
-					name="pwd">
+				<label for="pwd">Password:</label> 
+				<input type="password" class="form-control" id="pwd1" placeholder="Enter password" name="pwd1">
+				<div id="pwdoverlap" class="check"></div>
 			</div>
 			<div class="form-group">
 				<label for="email">Email:</label> <input type="email"
 					class="form-control" id="email" placeholder="Enter email"
 					name="email">
+				<div id="emailcheck" class = "check"></div>
 			</div>
 			<div class="form-group">
 				<label for="phone">Phone:</label> <input type="text"
 					class="form-control" id="phone" placeholder="Enter Phone"
 					name="Phone">
+				<div id = "phonecheck" class="check"></div>
 			</div>
-			<input type="button" class="btn btn-default" value="Join">
+			<input type="button" class="btn btn-default" value="Join" id = "join">
 		</form>
 	</div>
 </body>
